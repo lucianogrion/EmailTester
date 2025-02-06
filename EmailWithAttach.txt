@@ -1,0 +1,36 @@
+PDF.CreatePDFfromString(factorypub.PDFObtenerCaratula(reportepublicacion.ReportePublicacion[0]), funcionesUI.AgregarEnter(factorypub.ObtenerDatosCertificacionGestor(publicaciones)), funcionesUI.AgregarEnter(factorypub.PDFObtenerCuerpo(reportepublicacion.ReportePublicacion[0])), "", archivoTemp);
+byte[] vista = MADFAC.ObtenerContenido(publicaciones.Publicacion[0].idVistaIGJ);
+String vistaS = MADFAC.ObtenerNombreArchivo(publicaciones.Publicacion[0].idVistaIGJ);
+
+byte[] gestor = MADFAC.ObtenerContenido(publicaciones.Publicacion[0].idCertGestor);
+String gestorS = MADFAC.ObtenerNombreArchivo(publicaciones.Publicacion[0].idCertGestor);
+
+byte[] aviso = BORA.DelegacionVirtual.Factory.funciones.ConvertirFileToByteArray(archivoTemp);
+
+File.Delete(archivoTemp);
+
+ListaArchivos.Add(archivoTemp, aviso);
+ListaArchivos.Add(gestorS, gestor);
+ListaArchivos.Add(vistaS, vista);
+
+
+
+
+
+							PDF.CreatePDFfromString(factorypub.PDFObtenerCaratula(reportepublicacion.ReportePublicacion[0]), funcionesUI.AgregarEnter(factorypub.ObtenerDatosCertificacionGestor(publicaciones)), 							
+funcionesUI.AgregarEnter(factorypub.PDFObtenerCuerpo(reportepublicacion.ReportePublicacion[0])), "", archivoTemp);
+byte[] vista = MADFAC.ObtenerContenido(publicaciones.Publicacion[0].idVistaIGJ);
+String vistaS = MADFAC.ObtenerNombreArchivo(publicaciones.Publicacion[0].idVistaIGJ);
+
+byte[] gestor = MADFAC.ObtenerContenido(publicaciones.Publicacion[0].idCertGestor);
+String gestorS = MADFAC.ObtenerNombreArchivo(publicaciones.Publicacion[0].idCertGestor);
+
+byte[] aviso = BORA.DelegacionVirtual.Factory.funciones.ConvertirFileToByteArray(archivoTemp);
+
+File.Delete(archivoTemp);
+
+ListaArchivos.Add(archivoTemp, aviso);
+ListaArchivos.Add(gestorS, gestor);
+ListaArchivos.Add(vistaS, vista);
+bytesDocumentoDigital = PDF.concatAndAddContent(ListaArchivos);
+
